@@ -1,51 +1,83 @@
-''' ITERATION 1
+''' ITERATION 5
 
-Module: Stellar Analytics - Reusable Module for My Data Analytics Projects
+Module: Quantum Insights - A Comprehensive Tool for Data Analytics
 
-This module provides a simple, reusable foundation for my analytics projects. 
-When we work hard to write useful code, we want it to be reusable.
-A good byline could be used in every Python analytics project we do.
+This module is designed to serve as a robust foundation for data analytics projects. 
+It offers reusable components that help streamline the process of analyzing data and generating insightful metrics.
+In this iteration, we refine our byline to include key statistical summaries, enhancing the module’s ability to convey essential information at a glance.
 
-Process:
+Features:
+1. **Global Variables**: Define and initialize various metrics and settings relevant to our analytics work.
+2. **Statistics Calculation**: Compute essential statistics such as minimum, maximum, mean, and standard deviation for data lists.
+3. **Dynamic Byline**: Update the byline to reflect statistical insights derived from the data, offering a concise overview of key metrics.
 
-We don't write code from top to bottom; instead, we often write it from the outside in.
-Here's what a first draft of my utils_case.py might look like:
-
-1. I start with this docstring at the very beginning.
-   I use it to clarify the purpose of my Python file and organize my thoughts.
-   
-2. I'll declare a global variable for my byline string and just set it to some simple text.
-
-3. I'll declare a main() function for my module. When I run this script, I can use main() to test my byline.
-
-4. I'll add the boilerplate conditional execution code so I only run the main() function when 
-   this script is executed directly (but not when I import it into another file).
-
-I'll test it in an online interpreter to ensure this version runs correctly before continuing.
+This module is a cornerstone for any data-driven project, providing clarity and efficiency in data analysis.
 '''
 
+import statistics  # Import the statistics module for calculations
+
 #####################################
-# Declare a global variable named byline.
+# Declare global variables.
 #####################################
 
-byline: str = 'Stellar Analytics: Delivering Professional Insights'
+company_name: str = 'Quantum Insights'
+company_tagline: str = 'Empowering Data-Driven Decisions'
+is_privately_held: bool = True
+company_established_year: int = 2024
+tools_used: list[str] = ["Git", "GitHub", "Python"]
+recent_temperatures: list[float] = [72.5, 75.0, 71.0, 69.5]
+client_satisfaction_scores: list[int] = [85, 90, 78, 92, 88]
+
+# Calculate statistics for recent temperatures
+min_temp: float = min(recent_temperatures)
+max_temp: float = max(recent_temperatures)
+mean_temp: float = statistics.mean(recent_temperatures)
+stdev_temp: float = statistics.stdev(recent_temperatures)
+
+# Calculate statistics for client satisfaction scores
+min_score: int = min(client_satisfaction_scores)
+max_score: int = max(client_satisfaction_scores)
+mean_score: float = statistics.mean(client_satisfaction_scores)
+stdev_score: float = statistics.stdev(client_satisfaction_scores)
+
+# Define the byline using a multiline f-string to include additional information.
+byline: str = f"""
+{company_name}: {company_tagline}
+
+Company Details:
+- Privately Held: {is_privately_held}
+- Established Year: {company_established_year}
+- Tools Used: {', '.join(tools_used)}
+
+Statistics:
+- Recent Temperatures:
+  - Min: {min_temp}
+  - Max: {max_temp}
+  - Mean: {mean_temp:.2f}
+  - Std Dev: {stdev_temp:.2f}
+
+- Client Satisfaction Scores:
+  - Min: {min_score}
+  - Max: {max_score}
+  - Mean: {mean_score:.2f}
+  - Std Dev: {stdev_score:.2f}
+"""
+
+#####################################
+# Define a function to return the byline.
+#####################################
+
+def get_byline() -> str:
+    '''Return the byline string.'''
+    return byline
 
 #####################################
 # Define a main() function for this module.
 #####################################
 
-# Create a function named main.
-# A function is a block of code that performs a specific task.
-# This function will simply print the byline to the console.
-# Add a type hint to indicate that this function doesn't return anything when called 
-# (that is, it has a Python type of None).
-# It doesn't need any additional information passed in, 
-# so there's nothing needed inside the parentheses.
-# Everything afer the colon (:) must be indented (usually 4 spaces)
-
 def main() -> None:
-    '''Print the byline to the console when this function is called.'''
-    print(byline)
+    '''Print the byline returned by get_byline() to the console when this function is called.'''
+    print(get_byline())
 
 #####################################
 # Conditional Execution - Only call main() when executing this module as a script.

@@ -5,7 +5,14 @@ When we work hard to write useful code, we want it to be reusable.
 A good byline could be used in every Python analytics project we do.
 '''
 
-byline: str = 'Quantum Insights: Delivering Actionable Intelligence'
+is_remote_friendly: bool = True
+number_of_clients: int = 50
+services_offered: list = ["Data Visualization", "Machine Learning", "Statistical Analysis"]
+
+byline: str = f'''Quantum Insights: Delivering Actionable Intelligence
+- Remote Friendly: {is_remote_friendly}
+- Clients Served: {number_of_clients}
+- Services: {', '.join(services_offered)}'''
 
 def get_byline() -> str:
     '''Returns the byline string.'''

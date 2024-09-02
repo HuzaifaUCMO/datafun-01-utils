@@ -15,7 +15,9 @@ client_satisfaction_scores: list = [4.5, 4.7, 4.8, 5.0, 3.9, 4.2]
 byline: str = f'''Quantum Insights: Delivering Actionable Intelligence
 - Remote Friendly: {is_remote_friendly}
 - Clients Served: {number_of_clients}
-- Services: {', '.join(services_offered)}'''
+- Services: {', '.join(services_offered)}
+- Avg. Client Satisfaction: {statistics.mean(client_satisfaction_scores):.2f}
+- Client Satisfaction Std Dev: {statistics.stdev(client_satisfaction_scores):.2f}'''
 
 def get_byline() -> str:
     '''Returns the byline string.'''
